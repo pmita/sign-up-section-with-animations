@@ -1,0 +1,95 @@
+section{
+    min-height: 100vh;
+    width: 100%;
+    background: $background-black;
+    @include flex(row, center, center);
+}
+
+.sign-up{
+    width: 50%;
+    min-height: 50vh;
+    background: $highliigh-black;
+    @include flex(column,space-evenly,center);
+}
+
+.form{
+    width: 90%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    input{
+        height: 100%;
+        width: 100%;
+        padding-top: 25px;
+        border: none;
+        border-bottom: 2px solid $highliigh-black;
+        background: $highliigh-black;
+        color: $mina-white;
+        outline: none;
+    }
+    label{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+        /*Position border bottom at the end*/
+        &::after{
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-bottom: 3px solid $mina-white;
+            /*Put it out of frame*/
+            transform: translateX(-100%);
+            /*Transition in to correct place*/
+            transition: all 0.3s ease;
+        }
+        .content-name{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            font-size: 14px;
+            color: $mina-white;
+            /*Position span on correct positiom*/
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+/*Ensure you position span only when focus or a valid entry is given*/
+.form input:focus + .label-name .content-name,
+.form input:valid + .label-name .content-name{
+    transform: translateY(-100%);
+    font-size: 16px;
+}
+
+/*Ensure you position ::after element only when focus or a valid entry is given*/
+.form input:focus + .label-name::after,
+.form input:valid + .label-name::after{
+    transform: translateX(0%)
+}
+
+.actionButton{
+    padding: 10px 25px;
+    background: $highliigh-black;
+    border: 3px solid $highliigh-black;
+    color: $mina-white;
+    transition: all 0.3s ease;
+    &:hover{
+        color: $mina-white;
+        background: $background-black;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .sign-up{
+        width: 80%;
+        min-height: 50vh;
+        background: $highliigh-black;
+        @include flex(column,space-evenly,center);
+    }
+}

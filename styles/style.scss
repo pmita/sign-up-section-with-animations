@@ -1,0 +1,17 @@
+/*variables*/
+$background-black : rgb(0,0,0);
+$highliigh-black : rgba(56, 55, 55, 0.25);
+$mina-white: #fafafa;
+
+/*Flex mixin*/
+@mixin flex($direction, $justify, $align){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+
+/*Imports*/
+@import 'global';
+@import 'forms';
